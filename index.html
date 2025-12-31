@@ -1,490 +1,450 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#070A10" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070A10">
+  <title>Pragyos - AI & Digital Solutions Agency</title>
+  <meta name="description" content="Global AI agency building high-performance websites and autonomous AI workflows. Automated lead gen, AI voice assistants, and full-stack web architecture.">
+  <meta property="og:title" content="Pragyos - AI & Digital Solutions Agency">
+  <meta property="og:description" content="Websites that convert. AI that works 24/7. Built for global customers.">
+  <meta property="og:image" content="./og.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="./favicon.ico">
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
 
-		<title>Pragyos — AI & Digital Solutions Agency</title>
-		<meta
-			name="description"
-			content="Pragyos is a global AI & Digital Solutions agency. We build high-performance websites and deploy autonomous AI workflows: automated lead gen, AI voice assistants, and full-stack web architecture."
-		/>
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#" aria-label="Pragyos">
+        <img src="./logo.jpg" alt="Pragyos">
+        <strong>Pragyos</strong>
+      </a>
+      <nav class="nav-links">
+        <a href="#services" data-nav>Services</a>
+        <a href="#results" data-nav>Results</a>
+        <a href="#process" data-nav>Process</a>
+        <a href="#faq" data-nav>FAQ</a>
+        <a href="#contact" data-nav>Contact</a>
+      </nav>
+      <div class="actions">
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle theme"></button>
+        <a class="btn btn-primary" href="tel:+919816560620">Book a Call</a>
+        <button id="menuOpen" class="icon-btn hamburger" aria-label="Menu">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
 
-		<meta property="og:title" content="Pragyos — AI & Digital Solutions Agency" />
-		<meta
-			property="og:description"
-			content="High-performance websites. Autonomous AI workflows. Conversational AI that nurtures leads — built for speed, UX, and growth."
-		/>
-		<meta property="og:type" content="website" />
-		<meta property="og:image" content="./og.jpg" />
-		<meta property="og:locale" content="en_IN" />
+  <!-- Mobile Menu -->
+  <div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
+    <div class="drawer">
+      <div class="drawer-head">
+        <span>Menu</span>
+        <button id="menuClose" class="icon-btn" aria-label="Close">X</button>
+      </div>
+      <a href="#services">Services</a>
+      <a href="#results">Results</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="tel:+919816560620" style="margin-top:12px;width:100%">Book a Call</a>
+    </div>
+  </div>
 
-		<meta name="twitter:card" content="summary_large_image" />
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+      </div>
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="badge">
+            <span class="pulse"></span>
+            Built for global customers.
+          </div>
+          <h1>Bridge <span class="gradient-text">ambition</span> and <span class="gradient-text">intelligence</span>.</h1>
+          <p class="tagline">We build high-performance websites and deploy autonomous AI workflows - from automated lead generation to AI voice assistants.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="tel:+919816560620">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Start Your AI Transformation
+            </a>
+            <a class="btn btn-lg" href="#services">See Our Work</a>
+          </div>
+         
+        </div>
+        <div class="hero-visual reveal">
+          <img src="C:\AA my fiels\vs code\pragyos\assets\hero.png" alt="AI visualization" class="hero-img">
+          <!-- Quick Stats Overlay -->
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <strong>Fast</strong>
+              <span>Delivery</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Premium</strong>
+              <span>Services</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Global</strong>
+              <span>Distribution</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<link rel="icon" href="./favicon.ico" />
-		<link rel="preload" href="./assets/styles.css" as="style" />
-		<link rel="stylesheet" href="./assets/styles.css" />
-	</head>
+    <!-- SERVICES: Three Pillars -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">The Three Pillars</h2>
+          <p class="section-sub">You don't need more tools - you need a system. We combine digital architecture, autonomous operations, and conversational AI.</p>
+        </div>
+        <div class="pillars">
+          <article class="pillar-card reveal">
+            <div class="pillar-img">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Digital Architecture">
+              <div class="pillar-overlay">
+                <span class="pillar-num">01</span>
+              </div>
+            </div>
+            <div class="pillar-body">
+              <h3>Digital Architecture</h3>
+              <p>High-conversion websites and apps built for speed, SEO, and premium UX.</p>
+              <ul class="pillar-list">
+                <li>High-performance websites (Core Web Vitals-first)</li>
+                <li>Full-stack solutions with robust backends</li>
+                <li>E-commerce and lead-gen engines</li>
+              </ul>
+              <div class="pillar-stats">
+                <div class="stat"><strong>99.9%</strong><span>Uptime</span></div>
+                <div class="stat"><strong>&lt;2s</strong><span>Load</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="pillar-card reveal">
+            <div class="pillar-img">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Autonomous Operations">
+              <div class="pillar-overlay">
+                <span class="pillar-num">02</span>
+              </div>
+            </div>
+            <div class="pillar-body">
+              <h3>Autonomous Operations</h3>
+              <p>AI workflows that eliminate repetitive overhead so your team focuses on strategy.</p>
+              <ul class="pillar-list">
+                <li>Social media automation: create, schedule, post</li>
+                <li>Intelligent scheduling with auto follow-ups</li>
+                <li>Task elimination: reporting, data entry, ops</li>
+              </ul>
+              <div class="pillar-stats">
+                <div class="stat"><strong>40+</strong><span>Hrs/week saved</span></div>
+                <div class="stat"><strong>24/7</strong><span>Running</span></div>
+              </div>
+            </div>
+          </article>
+          <article class="pillar-card reveal">
+            <div class="pillar-img">
+              <img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?w=600&q=80" alt="Conversational AI">
+              <div class="pillar-overlay">
+                <span class="pillar-num">03</span>
+              </div>
+            </div>
+            <div class="pillar-body">
+              <h3>Conversational AI</h3>
+              <p>Voice and chat agents that qualify leads and nurture prospects around the clock.</p>
+              <ul class="pillar-list">
+                <li>AI voice assistants for inbound/outbound</li>
+                <li>Automated lead nurturing via email/SMS</li>
+                <li>Smart playbooks with escalation paths</li>
+              </ul>
+              <div class="pillar-stats">
+                <div class="stat"><strong>3x</strong><span>Response</span></div>
+                <div class="stat"><strong>90%+</strong><span>Accuracy</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <!-- Specialties -->
+        <div class="specialties reveal">
+          <h4>Our Stack</h4>
+          <div class="tags">
+            <span class="tag">n8n</span>
+            <span class="tag">make.com</span>
+            <span class="tag">Voice Agents</span>
+            <span class="tag">OpenAI</span>
+            <span class="tag">Full-Stack</span>
+            <span class="tag">SEO</span>
+            <span class="tag">React/Next.js</span>
+            <span class="tag">Node.js</span>
+          </div>
+           <!-- Pain Points -->
+          <!-- <div class="pain-points">
+            <div class="pain">Slow website = lost leads</div>
+            <div class="pain">Manual follow-ups = cold prospects</div>
+            <div class="pain">No automation = wasted hours</div>
+          </div> -->
+        </div>
+      </div>
+    </section>
 
-	<body>
-		<a class="skip" href="#main">Skip to content</a>
+    <!-- RESULTS: Live Dashboard -->
+    <section id="results" class="section section-dark">
+      <div class="container">
+        <div class="section-header center reveal">
+          <h2 class="section-title">Live Results Dashboard</h2>
+          <p class="section-sub">Real metrics from our deployed workflows and client projects.</p>
+        </div>
+        <div class="dashboard reveal">
+          <div class="stat-card glow">
+            <span class="stat-num" data-target="12500" data-suffix="+">0</span>
+            <span class="stat-label">Hours Saved</span>
+            <span class="stat-detail">Through automation</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" data-target="840" data-suffix="">0</span>
+            <span class="stat-label">Leads Generated</span>
+            <span class="stat-detail">This month</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" data-target="47" data-suffix="">0</span>
+            <span class="stat-label">Active Workflows</span>
+            <span class="stat-detail">Currently deployed</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" data-target="1.2" data-suffix="s">0</span>
+            <span class="stat-label">Avg Response</span>
+            <span class="stat-detail">AI assistant speed</span>
+          </div>
+        </div>
+        <!-- CTA Banner -->
+        <div class="cta-banner reveal">
+          <div class="cta-content">
+            <h3>Ready to see these results for your business?</h3>
+            <p>Get a free consultation and custom roadmap.</p>
+          </div>
+          <a class="btn btn-primary btn-lg" href="tel:+919816560620">Book a Free Call</a>
+        </div>
+      </div>
+    </section>
 
-		<header class="nav">
-			<div class="container nav-inner">
-				<a class="brand" href="#top" aria-label="Pragyos home">
-					<img src="./logo.jpg" alt="Pragyos logo" />
-					<div>
-						<strong>Pragyos</strong>
-						<span>AI & Digital Solutions Agency</span>
-					</div>
-				</a>
+    <!-- PROCESS -->
+    <section id="process" class="section">
+      <div class="container">
+        <div class="section-header center reveal">
+          <h2 class="section-title">How We Work</h2>
+          <p class="section-sub">Fast, structured, and measurable. We work like a product team.</p>
+        </div>
+        <div class="process">
+          <div class="process-step reveal">
+            <div class="step-num">1</div>
+            <div class="step-img">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80" alt="Strategy">
+            </div>
+            <h3>Discover</h3>
+            <p>We understand your market, offers, and funnel - then define the fastest path to success.</p>
+          </div>
+          <div class="process-connector"></div>
+          <div class="process-step reveal">
+            <div class="step-num">2</div>
+            <div class="step-img">
+              <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=400&q=80" alt="Build">
+            </div>
+            <h3>Build</h3>
+            <p>We build your website/app and implement AI workflows with n8n, make.com, and voice agents.</p>
+          </div>
+          <div class="process-connector"></div>
+          <div class="process-step reveal">
+            <div class="step-num">3</div>
+            <div class="step-img">
+              <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&q=80" alt="Optimize">
+            </div>
+            <h3>Optimize</h3>
+            <p>We track performance, remove friction, and continuously improve conversion and lead quality.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-				<nav class="nav-links" aria-label="Primary">
-					<a data-nav href="#services">Services</a>
-					<a data-nav href="#mission">Mission</a>
-					<a data-nav href="#process">Process</a>
-					<a data-nav href="#industries">Industries</a>
-					<a data-nav href="#contact">Contact</a>
-				</nav>
+    <!-- TRUST -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="trust-grid">
+          <div class="trust-content reveal">
+            <h2>Trusted by teams who want to scale smart</h2>
+            <p>We use the same tools powering the world's most automated businesses.</p>
+            <div class="trust-logos">
+              <span class="trust-logo">n8n</span>
+              <span class="trust-logo">make.com</span>
+              <span class="trust-logo">OpenAI</span>
+              <span class="trust-logo">Vercel</span>
+              <span class="trust-logo">AWS</span>
+            </div>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="quote-icon">"</div>
+            <blockquote>
+              <p>Pragyos automated 40 hours/week of manual work. Our team now focuses entirely on growth instead of chasing admin tasks.</p>
+              <cite>
+                <strong>Client</strong>
+                <span>SaaS Company</span>
+              </cite>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
 
-				<div class="actions">
-					<button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle theme"></button>
-					<a class="btn btn-primary" href="tel:+919816560620" aria-label="Book a call with Pragyos">
-						Book a Call
-						<span aria-hidden="true">→</span>
-					</a>
-					<button id="menuOpen" class="icon-btn hamburger" type="button" aria-label="Open menu">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-						</svg>
-					</button>
-				</div>
-			</div>
-		</header>
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Frequently Asked</h2>
+          <p class="section-sub">Questions we hear before booking a call.</p>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-list reveal">
+            <div class="faq-item" data-open="false">
+              <button class="faq-q">
+                How fast can you deliver a website?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">Most landing sites ship in 7-14 days depending on content and approvals. Larger full-stack builds vary by scope.</div>
+            </div>
+            <div class="faq-item" data-open="false">
+              <button class="faq-q">
+                Do you build automations with n8n / make.com?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">Yes. We design workflows around your team's real process, then implement and monitor them with clear handover docs.</div>
+            </div>
+            <div class="faq-item" data-open="false">
+              <button class="faq-q">
+                Can AI voice assistants handle calls?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">Absolutely. We set up voice agents for lead qualification, appointment booking, FAQs, and support triage - with guardrails and escalation paths.</div>
+            </div>
+            <div class="faq-item" data-open="false">
+              <button class="faq-q">
+                What do you need from us to start?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">Your offer, target audience, and 2-3 competitors. If you have existing assets (logo, brand copy, case studies), even better.</div>
+            </div>
+          </div>
+          <div class="faq-cta reveal">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=80" alt="Team meeting">
+            <div class="faq-cta-content">
+              <h3>Still have questions?</h3>
+              <p>Book a free 15-minute call. We'll answer everything.</p>
+              <a class="btn btn-primary" href="tel:+919816560620">Book a Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<div id="mobileDrawer" class="mobile-drawer" aria-hidden="true">
-			<div class="drawer" role="dialog" aria-modal="true" aria-label="Menu">
-				<div class="row">
-					<div class="muted" style="font-weight:700">Menu</div>
-					<button id="menuClose" class="x" type="button" aria-label="Close menu">✕</button>
-				</div>
-				<a href="#services">Services</a>
-				<a href="#mission">Mission</a>
-				<a href="#process">Process</a>
-				<a href="#industries">Industries</a>
-				<a href="#contact">Contact</a>
-				<hr class="sep" />
-				<a class="btn btn-primary" href="tel:+919816560620" style="justify-content:center">Book a Call</a>
-			</div>
-		</div>
+    <!-- CONTACT -->
+    <section id="contact" class="section section-dark">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <h2>Let's build something great.</h2>
+            <p>Book a call or send a message. We respond within 24 hours.</p>
+            <div class="contact-cards">
+              <a class="contact-card" href="tel:+919816560620">
+                <div class="contact-icon">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                </div>
+                <div>
+                  <strong>Call Us</strong>
+                  <span>+91 98165 60620</span>
+                </div>
+              </a>
+              <div class="contact-card">
+                <div class="contact-icon">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <div>
+                  <strong>Team</strong>
+                  <span>Harmanpreet & Navjot Singh</span>
+                </div>
+              </div>
+            </div>
+            <div class="social-row">
+              <a href="https://www.linkedin.com/company/pragyos/" target="_blank" rel="noreferrer" class="social-link">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+              <a href="https://www.instagram.com/pragyos.ai/" target="_blank" rel="noreferrer" class="social-link">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                Instagram
+              </a>
+            </div>
+            <p class="contact-note">Available for all time zones.</p>
+          </div>
+          <form id="contactForm" class="contact-form reveal" data-mailto="hello@pragyos.ai" novalidate>
+            <div class="form-row">
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+              <input type="email" id="email" name="email" placeholder="Email Address">
+            </div>
+            <div class="form-row">
+              <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+              <select id="service" name="service">
+                <option value="">Service Interest</option>
+                <option>Website / Landing Page</option>
+                <option>Full-Stack App</option>
+                <option>AI Workflows / Automation</option>
+                <option>AI Voice Assistant</option>
+                <option>Lead Nurturing</option>
+              </select>
+            </div>
+            <textarea id="message" name="message" placeholder="Tell us about your project..." rows="5" required></textarea>
+            <input type="text" id="company" name="company" style="display:none" autocomplete="off">
+            <button type="submit" class="btn btn-primary btn-lg btn-full">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
-		<main id="main">
-			<section id="top" class="hero">
-				<div class="container hero-grid">
-					<div class="reveal">
-						<div class="kicker">
-							<span class="dot" aria-hidden="true"></span>
-							India-based. Built for global customers across time zones.
-						</div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <img src="./logo.jpg" alt="Pragyos" width="36" height="36">
+          <div>
+            <strong>Pragyos</strong>
+            <span>AI & Digital Solutions</span>
+          </div>
+        </div>
+        <p>High-performance websites + autonomous AI workflows. Built for global customers.</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#results">Results</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <p class="footer-copy"> <span id="year"></span> Pragyos. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-						<h1>
-							Build a <span class="gradient-text">high-performance</span> digital presence — and let AI run the busy work.
-						</h1>
-						<p class="lead">
-							Pragyos is a global AI and Digital Solutions agency. We help businesses dominate online markets by building fast,
-							conversion-focused websites and deploying autonomous AI workflows — from automated lead generation to AI voice
-							assistants and full-stack web architecture.
-						</p>
+  <div id="toast" class="toast" role="status"></div>
 
-						<div class="hero-cta">
-							<a class="btn btn-primary" href="tel:+919816560620">Call for a Quote</a>
-							<a class="btn" href="#services">Explore Services</a>
-							<span class="meta">Fast response • Transparent quote • Growth-focused delivery</span>
-						</div>
-
-						<div class="quick-pains" aria-label="Common business pain points we solve">
-							<div class="pill">Slow website → lost leads</div>
-							<div class="pill">Manual follow-ups → cold prospects</div>
-							<div class="pill">High ad spend → low conversions</div>
-							<div class="pill">No automation → wasted team hours</div>
-						</div>
-					</div>
-
-					<aside class="hero-card reveal" aria-label="Highlights">
-						<div class="glow-orb" aria-hidden="true"></div>
-						<h2>What you get with Pragyos</h2>
-
-						<div class="grid2">
-							<div class="card">
-								<strong>Speed + SEO foundation</strong>
-								<span>Clean architecture, technical SEO, and UX that meets a European-standard feel.</span>
-							</div>
-							<div class="card">
-								<strong>Lead flow that doesn’t sleep</strong>
-								<span>Automation + conversational AI to qualify, nurture, and book appointments.</span>
-							</div>
-							<div class="card">
-								<strong>Full-stack reliability</strong>
-								<span>Backends, integrations, dashboards, and scalable systems for growth.</span>
-							</div>
-							<div class="card">
-								<strong>Clear, fast execution</strong>
-								<span>2–10 person agency speed with enterprise-grade discipline.</span>
-							</div>
-						</div>
-
-						<div class="metrics" aria-label="Fast facts">
-							<div class="metric">
-								<b data-target="3" data-suffix=" pillars">0</b>
-								<small>Digital + AI delivery model</small>
-							</div>
-							<div class="metric">
-								<b data-target="24" data-suffix="/7">0</b>
-								<small>Automation that keeps working</small>
-							</div>
-							<div class="metric">
-								<b data-target="2025">0</b>
-								<small>Founded</small>
-							</div>
-						</div>
-					</aside>
-				</div>
-			</section>
-
-			<section id="services" class="section">
-				<div class="container">
-					<div class="reveal">
-						<h2>What we do: the three pillars</h2>
-						<p class="sub">
-							You don’t need more tools — you need a system. Pragyos combines digital architecture, autonomous operations, and
-							conversational AI to turn your online presence into an always-on growth engine.
-						</p>
-					</div>
-
-					<div class="pillars">
-						<article class="pillar reveal">
-							<h3>1) Digital Architecture</h3>
-							<p>High-conversion websites & apps built for speed, SEO, and premium UX.</p>
-							<ul>
-								<li>High-performance websites & apps (Core Web Vitals-first)</li>
-								<li>Full-stack solutions and robust backend systems</li>
-								<li>E-commerce & lead-gen engines designed to convert</li>
-							</ul>
-						</article>
-
-						<article class="pillar reveal">
-							<h3>2) Autonomous Operations</h3>
-							<p>Automations and AI workflows that remove repetitive overhead.</p>
-							<ul>
-								<li>Social media autonomy: creation → schedule → post</li>
-								<li>Intelligent scheduling with automated follow-ups</li>
-								<li>Task elimination: reporting, data entry, ops cycles</li>
-							</ul>
-						</article>
-
-						<article class="pillar reveal">
-							<h3>3) Conversational AI</h3>
-							<p>Voice and chat agents that qualify leads and nurture prospects.</p>
-							<ul>
-								<li>AI voice assistants for inbound support & outbound qualification</li>
-								<li>Automated lead nurturing across email/SMS</li>
-								<li>Playbooks, guardrails, and outcome-based iteration</li>
-							</ul>
-						</article>
-					</div>
-
-					<div class="split">
-						<div class="panel reveal">
-							<h3 style="margin:0 0 8px">Specialties</h3>
-							<p class="sub" style="margin:0">
-								AI Automation, Web Development, n8n, make.com, voice agents, social media automation, and AI consultancy.
-							</p>
-							<div class="tagrow">
-								<span class="tag">n8n</span>
-								<span class="tag">make.com</span>
-								<span class="tag">Voice Agents</span>
-								<span class="tag">Lead Gen</span>
-								<span class="tag">Automation</span>
-								<span class="tag">Full-Stack</span>
-								<span class="tag">SEO</span>
-								<span class="tag">UX/UI</span>
-							</div>
-						</div>
-
-						<div class="panel reveal">
-							<h3 style="margin:0 0 8px">If this sounds like you…</h3>
-							<p class="sub" style="margin:0">
-								You’re getting traffic but not conversions. Leads drop off. Your team spends hours on follow-ups. You want
-								growth — without adding headcount.
-							</p>
-							<hr class="sep" />
-							<div style="display:flex; gap:10px; flex-wrap:wrap">
-								<a class="btn btn-primary" href="tel:+919816560620">Book a Call</a>
-								<a class="btn" href="#contact">Request a Quote</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section id="mission" class="section">
-				<div class="container split">
-					<div class="reveal">
-						<h2>Our mission</h2>
-						<p class="sub">
-							At Pragyos, we bridge the gap between human ambition and artificial intelligence. We empower businesses to enter
-							the digital market effortlessly by building high-performance online presences and deploying sophisticated AI
-							workflows that turn manual overhead into autonomous growth.
-						</p>
-						<div class="tagrow">
-							<span class="tag">Technology • Information • Internet</span>
-							<span class="tag">Company size: 2–10</span>
-							<span class="tag">India-based, global delivery</span>
-						</div>
-					</div>
-
-					<div class="panel reveal">
-						<h3 style="margin:0 0 8px">What “autonomous growth” means</h3>
-						<p class="sub" style="margin:0">
-							A website that loads fast and converts, a funnel that qualifies leads, and automations that follow-up and book
-							calls across time zones — without your team chasing every step.
-						</p>
-						<hr class="sep" />
-						<div class="grid2">
-							<div class="card">
-								<strong>More qualified leads</strong>
-								<span>Better messaging + faster pages + smarter capture.</span>
-							</div>
-							<div class="card">
-								<strong>Less manual work</strong>
-								<span>Automate repetitive tasks and approvals.</span>
-							</div>
-							<div class="card">
-								<strong>Higher conversion rate</strong>
-								<span>Clear structure, trust signals, and conversion UX.</span>
-							</div>
-							<div class="card">
-								<strong>Always-on follow-up</strong>
-								<span>Agents that respond instantly and nurture leads.</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section id="process" class="section">
-				<div class="container">
-					<div class="reveal">
-						<h2>How we deliver (fast, structured, measurable)</h2>
-						<p class="sub">
-							We work like a product team — clarify outcomes, ship quality quickly, then iterate based on data.
-						</p>
-					</div>
-
-					<div class="steps">
-						<div class="step reveal">
-							<div class="n">1</div>
-							<h3>Audit & strategy</h3>
-							<p>We map your market, offers, and funnel — then define the fastest path to conversion.</p>
-						</div>
-						<div class="step reveal">
-							<div class="n">2</div>
-							<h3>Build & automate</h3>
-							<p>We build your website/app and implement AI workflows (n8n/make.com/voice agents) end-to-end.</p>
-						</div>
-						<div class="step reveal">
-							<div class="n">3</div>
-							<h3>Launch & optimize</h3>
-							<p>We track performance, remove friction, and continuously improve conversion and lead quality.</p>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section id="industries" class="section">
-				<div class="container split">
-					<div class="panel reveal">
-						<h2>Industries</h2>
-						<p class="sub">
-							Pragyos works with startups and established teams that need stronger digital fundamentals and smarter operations.
-						</p>
-						<div class="tagrow">
-							<span class="tag">SaaS & Tech</span>
-							<span class="tag">Services & Agencies</span>
-							<span class="tag">E-commerce</span>
-							<span class="tag">Local + Global Brands</span>
-							<span class="tag">B2B Lead Gen</span>
-						</div>
-					</div>
-
-					<div class="panel reveal">
-						<h3 style="margin:0 0 8px">Case studies</h3>
-						<p class="sub" style="margin:0">
-							Want this section to be real? Share 2–3 past projects (even private) and I’ll convert them into clean, credible
-							case studies with measurable outcomes.
-						</p>
-						<hr class="sep" />
-						<a class="btn" href="#contact">Send project details</a>
-					</div>
-				</div>
-			</section>
-
-			<section id="faq" class="section">
-				<div class="container">
-					<div class="reveal">
-						<h2>FAQ</h2>
-						<p class="sub">A few things clients usually ask before booking a call.</p>
-					</div>
-
-					<div class="faq" role="region" aria-label="Frequently asked questions">
-						<div class="item reveal" aria-expanded="false">
-							<button type="button">
-								How fast can you deliver a website?
-								<span aria-hidden="true">+</span>
-							</button>
-							<div class="a">Most landing sites ship in 7–14 days depending on content and approvals. Larger full-stack builds vary by scope.</div>
-						</div>
-
-						<div class="item reveal" aria-expanded="false">
-							<button type="button">
-								Do you build automations with n8n / make.com?
-								<span aria-hidden="true">+</span>
-							</button>
-							<div class="a">Yes. We design workflows around your team’s real process, then implement and monitor them with clear handover docs.</div>
-						</div>
-
-						<div class="item reveal" aria-expanded="false">
-							<button type="button">
-								Can AI voice assistants handle inbound/outbound calls?
-								<span aria-hidden="true">+</span>
-							</button>
-							<div class="a">We can set up voice agents for lead qualification, appointment booking, FAQs, and support triage — with guardrails and escalation paths.</div>
-						</div>
-
-						<div class="item reveal" aria-expanded="false">
-							<button type="button">
-								What do you need from us to start?
-								<span aria-hidden="true">+</span>
-							</button>
-							<div class="a">Your offer, target audience, and 2–3 competitors. If you have existing assets (logo, brand copy, case studies), even better.</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section id="contact" class="section">
-				<div class="container split">
-					<div class="reveal">
-						<h2>Book a call. Get a quote.</h2>
-						<p class="sub">
-							If you’re serious about modernizing your digital presence and eliminating repetitive work with AI, call us. We’ll
-							clarify your goals, recommend a roadmap, and share a transparent quote.
-						</p>
-
-						<div class="panel" style="margin-top:16px">
-							<h3 style="margin:0 0 10px">Direct call</h3>
-							<div class="tagrow">
-								<a class="btn btn-primary" href="tel:+919816560620">Harmanpreet Singh — +91 98165 60620</a>
-								<a class="btn" href="tel:+919816560620">Navjot Singh — +91 98165 60620</a>
-							</div>
-							<p class="muted" style="margin:12px 0 0; font-size:13px">India-based, available for global time zones.</p>
-						</div>
-					</div>
-
-					<div class="panel reveal">
-						<h3 style="margin:0 0 8px">Prefer a message?</h3>
-						<p class="sub" style="margin:0">
-							Fill this out and we’ll reply quickly. (Formspree is optional; by default it uses email client mailto.)
-						</p>
-
-						<form id="contactForm" class="form" data-mailto="hello@pragyos.ai" data-formspree="" novalidate>
-							<div class="form-row">
-								<div class="field">
-									<label for="name">Name</label>
-									<input id="name" name="name" autocomplete="name" required />
-								</div>
-								<div class="field">
-									<label for="email">Email (or add phone below)</label>
-									<input id="email" name="email" type="email" autocomplete="email" />
-								</div>
-							</div>
-
-							<div class="form-row">
-								<div class="field">
-									<label for="phone">Phone</label>
-									<input id="phone" name="phone" autocomplete="tel" />
-								</div>
-								<div class="field">
-									<label for="service">Service interest</label>
-									<select id="service" name="service">
-										<option value="" selected>Choose…</option>
-										<option>Website / Landing Page</option>
-										<option>Full-Stack App</option>
-										<option>AI Workflows / Automation</option>
-										<option>AI Voice Assistant</option>
-										<option>Lead Nurturing (Email/SMS)</option>
-									</select>
-								</div>
-							</div>
-
-							<div class="field">
-								<label for="message">Tell us your goal (minimum 10 characters)</label>
-								<textarea id="message" name="message" required placeholder="Example: We want more qualified leads, faster follow-ups, and a website that converts."></textarea>
-							</div>
-
-							<div class="field" style="display:none">
-								<label for="company">Company</label>
-								<input id="company" name="company" autocomplete="off" />
-							</div>
-
-							<button class="btn btn-primary" type="submit">Send</button>
-							<div class="notice">Tip: For the fastest quote, call directly. We can align scope in 10 minutes.</div>
-						</form>
-						<p class="muted" style="margin:10px 0 0; font-size:12px">
-							Using Formspree? Paste your endpoint into <code>data-formspree</code> on the form.
-						</p>
-					</div>
-				</div>
-			</section>
-		</main>
-
-		<footer class="footer">
-			<div class="container footer-grid">
-				<div>
-					<div style="display:flex; align-items:center; gap:12px">
-						<img src="./logo.jpg" alt="" style="width:34px; height:34px; border-radius:12px; object-fit:cover" />
-						<div>
-							<strong>Pragyos</strong>
-							<div class="muted" style="font-size:13px">Global AI & Digital Solutions — based in India</div>
-						</div>
-					</div>
-					<p class="muted" style="margin:12px 0 0">
-						High-performance web experiences + autonomous AI workflows that turn manual overhead into growth.
-					</p>
-					<small>© <span id="year"></span> Pragyos. All rights reserved.</small>
-				</div>
-
-				<div>
-					<strong>Connect</strong>
-					<div class="social" style="margin-top:10px">
-						<a class="btn" href="https://www.linkedin.com/company/pragyos/" target="_blank" rel="noreferrer">LinkedIn</a>
-						<a class="btn" href="https://www.instagram.com/pragyos.ai/" target="_blank" rel="noreferrer">Instagram</a>
-						<a class="btn" href="tel:+919816560620">Call</a>
-					</div>
-					<hr class="sep" />
-					<div class="muted" style="font-size:13px">
-						Primary contacts: Harmanpreet Singh & Navjot Singh — +91 98165 60620
-					</div>
-				</div>
-			</div>
-		</footer>
-
-		<div id="toast" class="toast" role="status" aria-live="polite"></div>
-
-		<script>
-			document.getElementById('year').textContent = String(new Date().getFullYear());
-		</script>
-		<script src="./assets/main.js" defer></script>
-	</body>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="./assets/main.js" defer></script>
+</body>
 </html>

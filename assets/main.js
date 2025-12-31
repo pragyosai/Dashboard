@@ -1,237 +1,174 @@
-(() => {
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+/* === Pragyos - Main JS === */
+(function() {
+  'use strict';
 
-  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Subtle parallax glow movement
-  const orb = document.querySelector('.glow-orb');
-  if (!prefersReducedMotion && orb) {
-    let raf = 0;
-    window.addEventListener(
-      'pointermove',
-      (e) => {
-        if (raf) return;
-        raf = requestAnimationFrame(() => {
-          raf = 0;
-          const x = (e.clientX / window.innerWidth - 0.5) * 18;
-          const y = (e.clientY / window.innerHeight - 0.5) * 14;
-          orb.style.transform = `translate(calc(-40% + ${x}px), calc(-35% + ${y}px))`;
-        });
-      },
-      { passive: true }
-    );
+  // === Theme Toggle ===
+  const themeToggle = document.getElementById('themeToggle');
+  const stored = localStorage.getItem('theme');
+  if (stored) document.documentElement.dataset.theme = stored;
+  else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    document.documentElement.dataset.theme = 'light';
   }
-
-  // Theme
-  const themeKey = 'pragyos.theme';
-  const savedTheme = localStorage.getItem(themeKey);
-  if (savedTheme === 'light' || savedTheme === 'dark') {
-    document.documentElement.dataset.theme = savedTheme;
-  }
-
-  const themeBtn = $('#themeToggle');
-  const setThemeIcon = () => {
-    if (!themeBtn) return;
-    const isLight = document.documentElement.dataset.theme === 'light';
-    themeBtn.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
-    themeBtn.title = isLight ? 'Dark mode' : 'Light mode';
-    themeBtn.innerHTML = isLight
-      ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
-      : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.2A7.5 7.5 0 0 1 10.8 3 8.5 8.5 0 1 0 21 13.2Z" stroke="currentColor" stroke-width="2"/></svg>';
-  };
-  setThemeIcon();
-
-  themeBtn?.addEventListener('click', () => {
-    const current = document.documentElement.dataset.theme;
-    const next = current === 'light' ? 'dark' : 'light';
+  themeToggle?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
     document.documentElement.dataset.theme = next;
-    localStorage.setItem(themeKey, next);
-    setThemeIcon();
+    localStorage.setItem('theme', next);
   });
 
-  // Mobile drawer
-  const drawer = $('#mobileDrawer');
-  const openBtn = $('#menuOpen');
-  const closeBtn = $('#menuClose');
-  const openDrawer = () => {
-    if (!drawer) return;
-    drawer.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  };
-  const closeDrawer = () => {
-    if (!drawer) return;
+  // === Mobile Drawer ===
+  const drawer = document.getElementById('mobileDrawer');
+  const openBtn = document.getElementById('menuOpen');
+  const closeBtn = document.getElementById('menuClose');
+  openBtn?.addEventListener('click', () => { drawer?.classList.add('open'); drawer?.setAttribute('aria-hidden', 'false'); });
+  closeBtn?.addEventListener('click', () => { drawer?.classList.remove('open'); drawer?.setAttribute('aria-hidden', 'true'); });
+  drawer?.addEventListener('click', e => { if (e.target === drawer) { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); } });
+  drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    drawer.classList.remove('open');
     drawer.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  };
-  openBtn?.addEventListener('click', openDrawer);
-  closeBtn?.addEventListener('click', closeDrawer);
-  drawer?.addEventListener('click', (e) => {
-    if (e.target === drawer) closeDrawer();
-  });
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeDrawer();
-  });
-  $$('#mobileDrawer a').forEach((a) => a.addEventListener('click', closeDrawer));
+  }));
 
-  // Active nav based on scroll
-  const sections = $$('main section[id]');
-  const navLinks = $$('a[data-nav]');
-  const setActive = () => {
-    const y = window.scrollY + 120;
-    let currentId = sections[0]?.id;
-    for (const s of sections) {
-      if (s.offsetTop <= y) currentId = s.id;
-    }
-    navLinks.forEach((a) => {
-      const target = a.getAttribute('href')?.slice(1);
-      if (!target) return;
-      if (target === currentId) a.setAttribute('aria-current', 'page');
-      else a.removeAttribute('aria-current');
+  // === Active Nav ===
+  const navLinks = document.querySelectorAll('[data-nav]');
+  const sections = document.querySelectorAll('section[id]');
+  function setActiveNav() {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 150;
+      if (window.scrollY >= top) current = sec.id;
     });
-  };
-  window.addEventListener('scroll', () => requestAnimationFrame(setActive), { passive: true });
-  setActive();
-
-  // Smooth scrolling with header offset
-  const offsetScroll = (hash) => {
-    const id = hash?.replace('#', '');
-    const el = id ? document.getElementById(id) : null;
-    if (!el) return false;
-    const navH = 76;
-    const top = el.getBoundingClientRect().top + window.pageYOffset - navH - 10;
-    window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
-    return true;
-  };
-  document.addEventListener('click', (e) => {
-    const a = e.target?.closest?.('a[href^="#"]');
-    if (!a) return;
-    const href = a.getAttribute('href') || '';
-    if (href.length <= 1) return;
-    e.preventDefault();
-    history.pushState(null, '', href);
-    offsetScroll(href);
-  });
-  if (location.hash) {
-    setTimeout(() => offsetScroll(location.hash), 0);
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
   }
+  window.addEventListener('scroll', setActiveNav, { passive: true });
+  setActiveNav();
 
-  // Reveal on scroll
-  const revealEls = $$('.reveal');
-  if (prefersReducedMotion) {
-    revealEls.forEach((el) => el.classList.add('in'));
-  } else {
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in');
-            io.unobserve(entry.target);
-          }
+  // === Reveal on Scroll ===
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  reveals.forEach(el => io.observe(el));
+
+  // === Animated Counters ===
+  const counters = document.querySelectorAll('[data-target]');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const isDecimal = target % 1 !== 0;
+        const duration = 2000;
+        const startTime = performance.now();
+        
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = eased * target;
+          el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current).toLocaleString()) + suffix;
+          if (progress < 1) requestAnimationFrame(update);
         }
-      },
-      { threshold: 0.12 }
-    );
-    revealEls.forEach((el) => io.observe(el));
-  }
+        requestAnimationFrame(update);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObserver.observe(c));
 
-  // Count-up metrics
-  const animateCount = (el) => {
-    const target = Number(el.dataset.target || '0');
-    const suffix = el.dataset.suffix || '';
-    const duration = 900;
-    const start = performance.now();
-    const startVal = 0;
-    const step = (t) => {
-      const p = Math.min(1, (t - start) / duration);
-      const eased = 1 - Math.pow(1 - p, 3);
-      const val = Math.round(startVal + (target - startVal) * eased);
-      el.textContent = `${val}${suffix}`;
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
-
-  const metricNums = $$('[data-target]');
-  if (!prefersReducedMotion && metricNums.length) {
-    const metricIO = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            animateCount(entry.target);
-            metricIO.unobserve(entry.target);
-          }
-        }
-      },
-      { threshold: 0.5 }
-    );
-    metricNums.forEach((el) => metricIO.observe(el));
-  } else {
-    metricNums.forEach((el) => animateCount(el));
-  }
-
-  // FAQ accordion
-  $$('.faq .item > button').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.item');
-      if (!item) return;
-      const expanded = item.getAttribute('aria-expanded') === 'true';
-      $$('.faq .item').forEach((i) => i.setAttribute('aria-expanded', 'false'));
-      item.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  // === FAQ Accordion ===
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    btn?.addEventListener('click', () => {
+      const isOpen = item.dataset.open === 'true';
+      // Close all others
+      faqItems.forEach(i => i.dataset.open = 'false');
+      // Toggle current
+      item.dataset.open = isOpen ? 'false' : 'true';
     });
   });
 
-  // Form handling: Formspree if configured, else mailto
-  const toast = $('#toast');
-  const showToast = (msg) => {
-    if (!toast) return;
+  // === Contact Form ===
+  const form = document.getElementById('contactForm');
+  const toast = document.getElementById('toast');
+  function showToast(msg, duration = 4000) {
     toast.textContent = msg;
     toast.classList.add('show');
-    window.setTimeout(() => toast.classList.remove('show'), 3200);
-  };
-
-  const form = $('#contactForm');
-  form?.addEventListener('submit', async (e) => {
+    setTimeout(() => toast.classList.remove('show'), duration);
+  }
+  form?.addEventListener('submit', e => {
     e.preventDefault();
-
-    const honeypot = $('#company');
-    if (honeypot && honeypot.value.trim() !== '') return; // spam
-
-    const name = $('#name')?.value?.trim() || '';
-    const email = $('#email')?.value?.trim() || '';
-    const phone = $('#phone')?.value?.trim() || '';
-    const service = $('#service')?.value || '';
-    const message = $('#message')?.value?.trim() || '';
-
-    if (!name || (!email && !phone) || message.length < 10) {
-      showToast('Please add your name, email/phone, and a short message.');
+    const honeypot = form.querySelector('#company');
+    if (honeypot?.value) return;
+    
+    const name = form.querySelector('#name')?.value.trim();
+    const email = form.querySelector('#email')?.value.trim();
+    const phone = form.querySelector('#phone')?.value.trim();
+    const service = form.querySelector('#service')?.value;
+    const message = form.querySelector('#message')?.value.trim();
+    
+    if (!name || !message) {
+      showToast('Please fill in your name and message.');
       return;
     }
-
-    const endpoint = form.dataset.formspree || '';
-
-    // If endpoint is configured, POST JSON
-    if (endpoint) {
-      try {
-        const res = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ name, email, phone, service, message })
-        });
-        if (!res.ok) throw new Error('Request not OK');
-        form.reset();
-        showToast('Thanks! We’ll reach out shortly.');
-        return;
-      } catch {
-        // fall through to mailto
-      }
-    }
-
-    const subject = encodeURIComponent(`Pragyos inquiry — ${service || 'Services'}`);
+    
+    const mailto = form.dataset.mailto || 'hello@pragyos.ai';
+    const subject = encodeURIComponent('Website Inquiry from ' + name);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\nMessage:\n${message}\n\n— Sent from pragyos.ai website`
+      'Name: ' + name + '\n' +
+      'Email: ' + (email || 'N/A') + '\n' +
+      'Phone: ' + (phone || 'N/A') + '\n' +
+      'Service: ' + (service || 'Not specified') + '\n\n' +
+      'Message:\n' + message
     );
-    const to = form.dataset.mailto || 'hello@pragyos.ai';
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    
+    window.location.href = 'mailto:' + mailto + '?subject=' + subject + '&body=' + body;
+    showToast('Opening your email client...');
+    form.reset();
   });
+
+  // === Smooth Scroll ===
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // === Parallax Effect for Hero ===
+  const heroVisual = document.querySelector('.hero-visual');
+  if (heroVisual && window.innerWidth > 768) {
+    window.addEventListener('scroll', () => {
+      const scroll = window.scrollY;
+      if (scroll < 800) {
+        heroVisual.style.transform = 'translateY(' + (scroll * 0.15) + 'px)';
+      }
+    }, { passive: true });
+  }
+
+  // === Tag Hover Animation ===
+  const tags = document.querySelectorAll('.tag');
+  tags.forEach(tag => {
+    tag.addEventListener('mouseenter', () => {
+      tag.style.transform = 'scale(1.05)';
+    });
+    tag.addEventListener('mouseleave', () => {
+      tag.style.transform = 'scale(1)';
+    });
+  });
+
 })();
